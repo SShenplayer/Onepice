@@ -1,4 +1,6 @@
-import ADS from '../components/Ads.vue'
-export default [
-    { path: "/", component: ADS }
+import { ChangeURLtoAlias } from '../common/utils/AliasUtils'
+const BASEURL = '/'
+export const routes = [
+    { path: BASEURL, component: () => import('../components/Ads.vue') },
+    { path: BASEURL + 'ADS', component: () => import('../components/Ads.vue'), alias: ChangeURLtoAlias('ADS') }
 ]
