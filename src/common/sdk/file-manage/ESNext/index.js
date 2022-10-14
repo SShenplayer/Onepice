@@ -1,15 +1,15 @@
-"use strict";
-exports.__esModule = true;
-exports.CheckfilesArrayByDir = void 0;
-var fs = require('fs');
-var path = require('path');
-var extnames = ['.png', '.jpg'];
-function CheckfilesArrayByDir(Path) {
+// const fs = require('fs')
+// const path = require('path')
+import * as fs from 'fs';
+import * as path from 'path';
+const extnames = ['.png', '.jpg'];
+const CheckfilesArrayByDir = function (Path) {
+    console.log("fs:", fs);
     //读取文件路径中的文件
-    fs.readdirSync(Path).map(function (Filename) {
+    return fs.readdirSync(Path).map((Filename) => {
         //返回文件全路径
         return path.join(Path, Filename);
-    }).filter(function (Filename) {
+    }).filter((Filename) => {
         //判端是否为文件
         if (fs.statSync(Filename).isFile()) {
             //获取文件后缀并比对
@@ -19,6 +19,5 @@ function CheckfilesArrayByDir(Path) {
         }
         return false;
     });
-}
-exports.CheckfilesArrayByDir = CheckfilesArrayByDir;
-;
+};
+export { CheckfilesArrayByDir };
