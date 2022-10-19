@@ -1,7 +1,9 @@
 <script setup lang='ts'>
 //Composition API
 import { ShallowRef, shallowRef } from "vue";
+import { useStore } from "vuex";
 import { openPage } from "../common/ts/PageComponents";
+const store = useStore();
 let CurruntPage: ShallowRef = shallowRef(openPage("MAIN"));
 const onOpenPage = (name: string) => {
   CurruntPage.value = openPage(name.toUpperCase());
@@ -16,6 +18,9 @@ export default {};
     <el-container>
       <el-header>
         <img class="logo" src="../assets/Logo/Logo.jpg" alt="" />
+        <span v-if="store.state.Account">{{
+          "Welcome!! " + store.state.Account
+        }}</span>
       </el-header>
       <el-main>
         <transition name="el-zoom-in-center">
@@ -51,5 +56,9 @@ export default {};
 }
 .logo {
   height: 100%;
+}
+span {
+  line-height: 70px;
+  font-weight: bolder;
 }
 </style>

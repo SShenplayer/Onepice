@@ -9,6 +9,10 @@ import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 
 const app = createApp(App)
+app.config.errorHandler = (err) => {
+    /** 处理错误 */
+    console.log("Vue实例报错,上层捕捉未处理ERROR:", err)
+}
 app.use(router)
 app.use(store)
 app.use(ElementPlus)

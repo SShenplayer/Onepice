@@ -2,6 +2,7 @@
 //Composition API
 import { reactive, ref } from "vue";
 import type { FormInstance, FormRules } from "element-plus";
+import { useStore } from "vuex";
 const emits = defineEmits(["onOpenPage"]);
 //声明变量
 const FormData = reactive({
@@ -9,6 +10,7 @@ const FormData = reactive({
   Password: "", //密码
   Checkcode: "", //验证码
 });
+const store = useStore();
 const FormDataRef = ref<FormInstance>();
 //自定义表单规则
 const validateCode = (rule: any, value: any, callback: any) => {
@@ -32,16 +34,20 @@ const rules = reactive<FormRules>({
   ],
   Checkcode: [{ required: true, validator: validateCode, trigger: "blur" }],
 });
-const commit = async function (FormDataRef: FormInstance | undefined) {
+const Commit = async function (FormDataRef: FormInstance | undefined) {
   if (!FormDataRef) return;
   await FormDataRef.validate((valid, fields) => {
     if (valid) {
-      console.log("commit!");
+      store.commit("ChangeLoginInfo", FormData);
       emits("onOpenPage", "MAIN");
     } else {
       console.log("error", fields);
     }
   });
+};
+const Reset = async function (FormDataRef: FormInstance | undefined) {
+  if (!FormDataRef) return;
+  FormDataRef.resetFields();
 };
 </script>
 <script lang='ts'>
@@ -63,6 +69,7 @@ export default {};
           :model="FormData"
           :rules="rules"
           :label-position="'left'"
+          :size="'large'"
           label-width="100px"
         >
           <el-form-item label="Account" prop="Account">
@@ -86,10 +93,10 @@ export default {};
             />
           </el-form-item>
           <el-form-item label="">
-            <el-button type="primary" @click="commit(FormDataRef)"
+            <el-button type="primary" @click="Commit(FormDataRef)"
               >Login</el-button
             >
-            <el-button>Reset</el-button>
+            <el-button @click="Reset(FormDataRef)">Reset</el-button>
           </el-form-item>
         </el-form>
       </el-main>
