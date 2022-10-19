@@ -28,7 +28,7 @@ export default {};
     <img
       class="img-box"
       :src="Adspath"
-      alt=""
+      alt="Can not found files extname like .jpg or .png"
       @click="OpenRootPage('PAGECONTAINER')"
     />
   </div>
