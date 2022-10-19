@@ -10,7 +10,6 @@ export default createStore({
     //自定义操作数据仓库的接口
     mutations: {
         ChangeLoginInfo(state, data) {
-            console.log("ChangeLoginInfo")
             state.Account = data.Account
             state.Password = data.Password
         }
