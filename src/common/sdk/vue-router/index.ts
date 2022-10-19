@@ -4,7 +4,8 @@ const AppToADS = function (name: string = "ADS") {
     const router = useRouter();
     router.replace(ChangeURLtoAlias(name));
 }
-const OpenPage = function (name: string = "Main") {
-    return useRouter().replace(ChangeURLtoAlias(name));
+//before Change Dom To Import {useRouter} from 'vue-router'!!
+const RootPage = function (name: string = "PAGECONTAINER", useRouter: any) {
+    return useRouter.replace(ChangeURLtoAlias(name));
 }
-export { AppToADS, OpenPage }
+export { AppToADS, RootPage }
