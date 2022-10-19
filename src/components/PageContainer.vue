@@ -17,7 +17,12 @@ export default {};
   <div class="common-layout">
     <el-container>
       <el-header>
-        <img class="logo" src="../assets/Logo/Logo.jpg" alt="" />
+        <img
+          class="logo"
+          src="../assets/Logo/Logo.jpg"
+          alt="404"
+          @click="onOpenPage('MAIN')"
+        />
         <span v-if="store.state.Account">{{
           "Welcome!! " + store.state.Account
         }}</span>
