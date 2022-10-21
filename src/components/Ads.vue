@@ -1,9 +1,9 @@
 <script setup lang='ts'>
 //Composition API
-import { AdsImages } from "../assets/adsImgs/index";
 import { reactive, ref } from "vue";
-import { RootPage } from "../common/sdk/vue-router";
 import { useRouter } from "vue-router";
+import { AdsImages } from "../assets/adsImgs/index";
+import { RootPage } from "../common/sdk/vue-router";
 let index: number = 0;
 let Adspath = ref(AdsImages[index].Path);
 let useRoute = useRouter();

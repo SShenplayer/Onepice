@@ -3,14 +3,17 @@
 import { reactive, ref } from "vue";
 import type { FormInstance, FormRules } from "element-plus";
 import { useStore } from "vuex";
+//声明调用父组件
 const emits = defineEmits(["onOpenPage"]);
+//声明vuex数据仓库
+const store: any = useStore();
 //声明变量
 const FormData = reactive({
   Account: "", //账号
   Password: "", //密码
   Checkcode: "", //验证码
 });
-const store = useStore();
+
 const FormDataRef = ref<FormInstance>();
 //自定义表单规则
 const validateCode = (rule: any, value: any, callback: any) => {
