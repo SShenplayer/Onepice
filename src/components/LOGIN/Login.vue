@@ -13,7 +13,7 @@ const FormData = reactive({
   Password: "", //密码
   Checkcode: "", //验证码
 });
-
+let data = JSON.stringify({ name: "zhenggaoshen" });
 const FormDataRef = ref<FormInstance>();
 //自定义表单规则
 const validateCode = (rule: any, value: any, callback: any) => {
