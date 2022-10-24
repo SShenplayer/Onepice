@@ -14,7 +14,7 @@ export const Request = (url: string, data?: Object, method: string = 'POST') => 
     let config: AxiosRequestConfig = {
         url: url,
         method: method,
-        data: data,
+        data: JSON.stringify(data),
     }
     return HTTPRequest(config);
 }
