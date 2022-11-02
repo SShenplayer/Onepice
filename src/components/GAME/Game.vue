@@ -27,7 +27,10 @@ const tableData: Game[] = reactive([
     size: "200kb",
   },
 ]);
-const handleClick = function (index: number, row: Game) {
+const Download = function (index: number, row: Game) {
+  console.log("row=", row);
+};
+const View = function (index: number, row: Game) {
   console.log("row=", row);
 };
 </script>
@@ -49,8 +52,11 @@ export default {};
       <el-table-column property="address" label="Address" />
       <el-table-column label="Oprations">
         <template #default="scope">
-          <button @click="handleClick(scope.$index, scope.row)">
-            download
+          <button @click="Download(scope.$index, scope.row)">
+            Download
+          </button>
+          <button @click="View(scope.$index, scope.row)">
+            View
           </button>
         </template>
       </el-table-column>
